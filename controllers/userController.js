@@ -1,7 +1,9 @@
 const User = require("../models/User");
 const Recipe = require("../models/Recipe");
 const crypto = require("crypto");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+
 const jwt = require("jsonwebtoken");
 const Image = require("../models/Image");
 const Comment = require("../models/Comments");

@@ -50,7 +50,9 @@ db.once("open", () => {
 });
 
 // Define your API routes here
-const userRoutes = require("../api/routes/userRoutes");
+// const userRoutes = require("../api/routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
+
 app.use("/api", userRoutes);
 
 const PORT = process.env.PORT || 5000;

@@ -10,7 +10,7 @@ const Comment = require("../models/Comments");
 //
 // megusta pablo
 //
-
+console.log("gas");
 //
 
 //

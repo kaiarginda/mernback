@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(
   cors({
     // origin: "https://recipereact.onrender.com",
-    origin: "http://localhost:3000",
+    origin: "https://mernclient-v70c.onrender.com/",
     credentials: true, // Enable credentials (cookies)
   })
 );

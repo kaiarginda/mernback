@@ -19,8 +19,12 @@ app.use(
     credentials: true, // Enable credentials (cookies)
   })
 );
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
+// Handle client-side routing
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // app.use(

@@ -14,7 +14,8 @@ app.use(cookieParser());
 // app.use(cors());
 app.use(
   cors({
-    origin: "https://recipereact.onrender.com",
+    // origin: "https://recipereact.onrender.com",
+    origin: "http://localhost:3000",
     credentials: true, // Enable credentials (cookies)
   })
 );

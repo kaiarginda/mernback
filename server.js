@@ -14,17 +14,12 @@ app.use(cookieParser());
 // app.use(cors()) ;
 app.use(
   cors({
-    // origin: "https://recipereact.onrender.com",
     origin: "https://mernclient-v70c.onrender.com",
-    credentials: true, // Enable credentials (cookies)
+    credentials: true,
   })
 );
-app.use(express.static(path.join(__dirname, "client/build")));
+app.options("*", cors());
 
-// Handle client-side routing
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // app.use(
@@ -37,6 +32,25 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 //     cookie: { secure: false, httpOnly: false, maxAge: 4 * 60 * 60 * 1000 },
 //   })
 // );
+
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://mernclient-v70c.onrender.com"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Credentials", true);
+
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    return res.status(200).json({});
+  }
+
+  next();
+});
 
 app.use(express.json());
 app.use("/images", express.static("./images"));
